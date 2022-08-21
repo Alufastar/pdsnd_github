@@ -3,16 +3,12 @@ import pandas as pd
 import numpy as np
 
 pd.__version__
-
-pd.__version__
-
-CITY_DATA = { 'chicago': 'chicago.csv',
-              'new york city': 'new_york_city.csv',
-              'washington': 'washington.csv' }
+# check the version of pandas, this code demands version 1.4.3 or above.
 
 
-
-
+CITY_DATA = {'chicago': 'chicago.csv',
+             'new york city': 'new_york_city.csv',
+             'washington': 'washington.csv'}
 
 
 def get_filters():
@@ -88,15 +84,14 @@ def get_filters():
         except:
             print("Humm this is not a valid option, let us try again:")
 
-
-    print("All set! The following analysis will focus on "+ city+", "+month+", "+day)
+    print("All set! The following analysis will focus on " +
+          city+", "+month+", "+day)
     print('-' * 40)
 
     return city, month, day
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-
 
 
 def load_data(city, month, day):
@@ -127,8 +122,8 @@ def load_data(city, month, day):
     if month != 'all':
         # use the index of the months list to get the corresponding int
 
-        months = ['january', 'february', 'march', 'april', 'may', 'june','july','august','september','october',
-                  'november','december']
+        months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october',
+                  'november', 'december']
 
         month = months.index(month) + 1
 
@@ -140,13 +135,10 @@ def load_data(city, month, day):
         # filter by day of week to create the new dataframe
         df = df[df['day_of_week'] == day.title()]
 
-
     return df
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-
-
 
 
 def display_data(df):
@@ -156,7 +148,8 @@ def display_data(df):
     """
     start_time = time.time()
 
-    view_data = input('\nWould you like to view 5 rows of individual trip data? Enter yes or no\n')
+    view_data = input(
+        '\nWould you like to view 5 rows of individual trip data? Enter yes or no\n')
     start_loc = 0
     while view_data != "no":
         print(df.iloc[start_loc:start_loc + 5])
@@ -189,7 +182,6 @@ def time_stats(df):
     print('-'*40)
 
 
-
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
 
@@ -208,13 +200,11 @@ def station_stats(df):
     df['S_E_Station'] = df['Start Station'] + " , " + df['End Station']
 
     popular_start_end_station = df['S_E_Station'].value_counts().idxmax()
-    print('Most commonly used start-end station combination: ', popular_start_end_station)
+    print('Most commonly used start-end station combination: ',
+          popular_start_end_station)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-
-
-
 
 
 def trip_duration_stats(df):
@@ -224,15 +214,14 @@ def trip_duration_stats(df):
     start_time = time.time()
 
     # display total travel time
-    print('Total travel time: ', df['Trip Duration'].sum()," seconds")
-
+    print('Total travel time: ', df['Trip Duration'].sum(), " seconds")
 
     # display mean travel time
-    print( "Average travel time per trip: ", df['Trip Duration'].mean()," seconds")
+    print("Average travel time per trip: ",
+          df['Trip Duration'].mean(), " seconds")
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-
 
 
 def user_stats(df):
@@ -260,15 +249,13 @@ def user_stats(df):
         youngest = df['Birth Year'].max().astype(int)
         popular_birth = df['Birth Year'].value_counts().idxmax().astype(int)
 
-        print('For the given scope, the users are born between',oldest,'and',youngest,'.'
-          ,'\nThe most common birth year is', popular_birth,'.')
+        print('For the given scope, the users are born between', oldest, 'and',
+              youngest, '.', '\nThe most common birth year is', popular_birth, '.')
     except:
         print('The selected dataset does not have birth year information.')
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-
-
 
 
 def main():
@@ -287,4 +274,4 @@ def main():
 
 
 if __name__ == "__main__":
-	main()
+    main()
