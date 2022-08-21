@@ -5,6 +5,7 @@ import numpy as np
 pd.__version__
 # check the version of pandas, this code demands version 1.4.3 or above.
 
+
 CITY_DATA = {'chicago': 'chicago.csv',
              'new york city': 'new_york_city.csv',
              'washington': 'washington.csv'}
