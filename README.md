@@ -14,6 +14,11 @@ washington.csv
 chicago.csv
 new_york_city.csv
 
+
+### How to Use the Project
+Open and run the "bikeshare.py" file.
+Pre-requisite: pandas pacakge version 1.4.3 or above.
+
 ### Credits
 The above used data and project template of this project are provided by the course of Udacity "Programming for Data Science with Python":
 https://www.udacity.com/course/programming-for-data-science-nanodegree--nd104
